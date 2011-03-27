@@ -8,7 +8,7 @@
 }
 
 body {
-	background-color: #2e2e2e;
+	background-color: #2d2d2d;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
 }
 
 #splash {
-	width: 975px;
+	width: 977px;
 	height: 370px;
 	background-color: #000000;
 	position: relative;
@@ -46,7 +46,7 @@ body {
 	position: absolute;
 	top: 40px;
 	left: 470px;
-	width: 410px;
+	width: 440px;
 	color: #eeeeee;
 	font-size: 15px;
 	line-height: 160%;
@@ -84,7 +84,6 @@ body {
 	list-style-type: none;
 	height: 35px;
 	font-size: 18px;
-	background-color: #111111;
 	color: #eeeeee;
 	letter-spacing: 1px;
 }
@@ -96,7 +95,7 @@ body {
 }
 
 #navi {
-	width: 967px;
+	width: 969px;
 	height: 45px;
 	margin: 0 auto 3px auto;
 	padding: 0 4px;
@@ -195,7 +194,7 @@ h2 {
 	margin: 0;
 	padding-top: 22px;
 	padding-left: 16px;
-	font-size: 16px;
+	font-size: 17px;
 	height: 44px;
 	background: url(headline.png) #000000 repeat-x;
 	color: #ffffff;
