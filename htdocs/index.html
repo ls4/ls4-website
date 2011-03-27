@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>The LS4 Project | open source distributed storage system</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content="LS4 -- open-source distributed storage system" />
+	<meta name="keywords" content="LS4, distributed, storage, scalability, versioning, replication, MessagePack, msgpack" />
+
+	<script src="index/prettify.js" type="text/javascript"></script>
+	<link href="index/prettify.css" rel="stylesheet" type="text/css"/>
+
+	<link rel="stylesheet" type="text/css" href="index/yui/cssreset/reset-min.css">
+	<link rel="stylesheet" type="text/css" href="index/yui/cssfonts/fonts-min.css">
+	<link rel="stylesheet" type="text/css" href="index/yui/cssbase/base-min.css">
+	<link rel="stylesheet" type="text/css" href="index/ls4.css">
+</head>
+<body onload="prettyPrint()">
+<div id="container">
+	<div id="splash">
+		<h1>LS4</h1>
+		<img id="logo" src="index/splash.png" width="335" height="315" alt="LS4 logo" />
+
+		<p id="splash_summary">
+LS4 is a distributed storage system suitable for storing data like photos, musics or movies with attributes.
+		</p>
+
+		<pre id="splash_code">$ gem install ls4
+$ ls4-standalone -s ./data &amp;
+$ ls4cmd --help</pre>
+
+		<ul id="splash_list">
+		<li>Scalability</li>
+		<li>Versioning</li>
+		<li>Availability</li>
+		<li>Geo-redunduncy</li>
+		<li>Performance</li>
+		<li>Continous Snapshot</li>
+		</ul>
+	</div>
+
+	<ul id="navi">
+	<li>
+		<a href="#quickstart">
+		<span class="navi_title">Quick Start</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://ls4.sourceforge.net/doc/">
+		<span class="navi_title">Documents</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://github.com/ls4/">
+		<span class="navi_title">Source</span>
+		</a>
+	</li>
+	<li>
+		<a href="http://twitter.com/search?q=%23ls4">
+		<span class="navi_title">#ls4</span>
+		</a>
+	</li>
+	</ul>
+
+	<div class="cbox">
+		<div class="box rsplitr">
+			<h2>News</h2>
+			<ul id="news">
+			<li>
+				<p class="news_day">2011-05-XX</p>
+				<p class="news_desc">Released version 1.0.0</p>
+			</li>
+			<li>
+				<p class="news_day">2011-03-20</p>
+				<p class="news_desc">Released version 0.9.0</p>
+			</li>
+			</ul>
+		</div>
+
+		<div class="box rsplitl">
+			<h2>Data Model</h2>
+			<img src="index/datamodel.png" />
+			<div class="caption">
+				<p>LS4 stores a set of objects identified by a key. Each object consists of data and attributes. And each object can have multiple versions. You can get back old version of the object unless you surely delete it. The versions are identified by name or creation time.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<h2>Replica Sets</h2>
+		<img src="index/design.png" />
+		<div class="caption">
+			<p>TODO</p>
+		</div>
+	</div>
+
+	<div class="box">
+		<h2>Direct Data Transfer</h2>
+		<div class="ic1right"><img src="index/direct.png" /></div>
+		<div class="caption ic1left">
+			<p>TODO</p>
+		</div>
+	</div>
+
+	<div class="box">
+		<h2>Geo Redundancy</h2>
+		<div class="ic1right"><img src="index/geo.png" /></div>
+		<div class="caption ic1left">
+			<p>TODO</p>
+		</div>
+	</div>
+
+	<div class="box">
+		<h2>REST and MessagePack-RPC API</h2>
+		<div class="caption">
+			<p>TODO</p>
+		</div>
+	</div>
+
+	<div class="box">
+		<h2 id="quickstart">Quick Start</h2>
+		<div class="ic2left">
+			<pre class="prettyprint">&gt; gem install ls4
+&gt; ls4-standalone -s ./data -h 18080</pre>
+			<pre class="prettyprint">&gt; ls4cmd add_data key1 value1
+&gt; ls4cmd get_data key1
+value1</pre>
+		</div>
+		<div class="caption ic2right">
+			<p>TODO</p>
+		</div>
+	</div>
+
+	<div id="footer">
+		<a id="footerlogo" href="http://sourceforge.net/projects/ls4"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=508833&amp;type=11" width="120" height="30" alt="Get LS4 at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a>
+		<p>Copyright &copy; 2010-2011 FURUHASHI Sadayuki</p>
+	</div>
+</div>
+</body>
+</html>
+

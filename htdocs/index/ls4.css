@@ -1,0 +1,284 @@
+.clearfix:after, .cbox:after, .box:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+}
+
+body {
+	background-color: #2e2e2e;
+}
+
+* {
+	font-family: Arial, sans-serif;
+}
+
+#container {
+	width: 997px;
+	margin: 0 auto;
+	background: url(shadow.png) #ffffff repeat-y;
+}
+
+#container > * {
+	background-color: white;
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#splash {
+	width: 975px;
+	height: 370px;
+	background-color: #000000;
+	position: relative;
+}
+
+#logo {
+	display: block;
+	position: absolute;
+	left: 38px;
+	top: 17px;
+}
+
+#splash_summary {
+	position: absolute;
+	top: 40px;
+	left: 470px;
+	width: 410px;
+	color: #eeeeee;
+	font-size: 15px;
+	line-height: 160%;
+	letter-spacing: 1px;
+}
+
+#splash_code {
+	position: absolute;
+	top: 108px;
+	left: 470px;
+	width: 410px;
+	color: #ffffff;
+	font-size: 18px;
+	line-height: 30px;
+	background-color: #232325;
+	border: 1px solid #8a8bb5;;
+	padding: 10px 15px;
+	font-family: Courier, sans-serif;
+}
+
+#splash_list {
+	position: absolute;
+	top: 250px;
+	left: 470px;
+	width: 450px;
+	font-size: 15px;
+	padding: 0;
+	margin: 0;
+}
+
+#splash_list > li {
+	width: 200px;
+	float: left;
+	margin: 0;
+	list-style-type: none;
+	height: 35px;
+	font-size: 18px;
+	background-color: #111111;
+	color: #eeeeee;
+	letter-spacing: 1px;
+}
+
+#splash_list > li:before {
+	content: url(arrow.png);
+	vertical-align: -2px;
+	margin-right: 5px;
+}
+
+#navi {
+	width: 967px;
+	height: 45px;
+	margin: 0 auto 3px auto;
+	padding: 0 4px;
+	background: url(button-back.png) #616161 repeat-x;
+	border-top: 1px solid #888888;
+	border-bottom: 1px solid #444444;
+}
+
+#navi li {
+	width: 238px;
+	height: 36px;
+	background: url(button-a.png) #424242 no-repeat;
+	color: #ffffff;
+	list-style-type: none;
+	margin: 5px 0 0 3px;
+	float: left;
+	text-align: center;
+	padding: 0;
+}
+
+#navi > li > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-decoration: none;
+	color: #eeeeee;
+}
+
+#navi > li > a:hover {
+	background: url(button-b.png) #616161 no-repeat;
+	color: #ffffff;
+}
+
+#navi .navi_title {
+	display: block;
+	padding-top: 7px;
+	font-size: 15px;
+	padding-bottom: 0.2em;
+	/*letter-spacing: 1px;*/
+}
+
+#navi .navi_desc {
+	color: #000000;
+	display: block;
+	font-size: 100%;
+}
+
+#navi .navi_desc:after {
+	content: "\226b";
+	margin-left: 5px;
+	font-size: 120%;
+	vertical-align: -1px;
+}
+
+.rsplitr {
+	float: right;
+	width: 330px;
+}
+
+.rsplitl {
+	margin-right: 332px;
+}
+
+#news {
+	background-color: #e5e5e5;
+	padding: 1em 1em 1em 1em;
+	margin: 0;
+}
+
+#news li {
+	list-style-type: none;
+}
+
+#news .news_day {
+	font-size: 90%;
+	color: #777777;
+	margin-bottom: 0.5em;
+}
+
+#news .news_desc {
+	font-size: 95%;
+	color: #30437a;
+	padding-bottom: 0.9em;
+	margin-bottom: 1.3em;
+	border-bottom: 1px solid #777777;
+}
+
+h1 {
+	text-indent: -10000px;
+	position: relative;
+	height: 0;
+	margin: 0;
+}
+
+h2 {
+	margin: 0;
+	padding-top: 22px;
+	padding-left: 16px;
+	font-size: 16px;
+	height: 44px;
+	background: url(headline.png) #000000 repeat-x;
+	color: #ffffff;
+}
+
+.caption {
+	background-color: #e5e5e5;
+	margin: 0;
+	padding: 0.8em 1.2em 0.5em 1.2em;
+}
+
+.caption p {
+	line-height: 150%;
+	margin-bottom: 0.5em;
+	text-align: justify;
+}
+
+.box > img {
+	display: block;
+	margin: 5px auto 2px auto;
+}
+
+.ic1right {
+	float: right;
+	width: 470px;
+	margin: 0 0 0 0;
+}
+
+.ic1left {
+	float: left;
+	width: 430px;
+}
+
+.ic2right {
+	float: right;
+	width: 500px;
+	margin: 0 0 0 0;
+}
+
+.ic2left {
+	float: left;
+	width: 400px;
+}
+
+.box pre {
+	font-weight: bold;
+	font-size: 110%;
+	font-family: Courier, sans-serif;
+	line-height: 140%;
+	padding: 10px;
+	margin: 15px 0 10px 15px;
+	border: 1px solid #005181;
+}
+
+
+#footer {
+	width: 975px;
+	height: 50px;
+	margin: 0 auto;
+	background-color: #2e2e2e;
+	color: #cccccc;
+	margin-top: 2em;
+	padding-top: 1em;
+	padding-bottom: 20px;
+	font-size: 103%;
+}
+
+#footer p {
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#footerlogo {
+	float: right;
+	width: 126px;
+	height: 34px;
+	display: block;
+	text-align: center;
+	padding-top: 4px;
+	background-color: #000000;
+	margin-top: 2px;
+	margin-right: 17px;
+	border: 1px solid #888888;
+}
+
