@@ -219,6 +219,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+pre, pre span {
+	font-family: Courier, sans-serif;
+}
+
 .caption {
 	background-color: #e5e5e5;
 	margin: 0;
@@ -265,7 +269,6 @@ a:hover {
 .box pre {
 	font-weight: bold;
 	font-size: 110%;
-	font-family: Courier, sans-serif;
 	line-height: 140%;
 	padding: 10px;
 	margin: 15px 0 10px 15px;
