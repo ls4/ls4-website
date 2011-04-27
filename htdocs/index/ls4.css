@@ -46,9 +46,9 @@ body {
 	position: absolute;
 	top: 40px;
 	left: 470px;
-	width: 440px;
+	width: 450px; /* 440px */
 	color: #eeeeee;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 160%;
 	letter-spacing: 1px;
 }
@@ -57,7 +57,7 @@ body {
 	position: absolute;
 	top: 108px;
 	left: 470px;
-	width: 410px;
+	width: 415px; /* 410px */
 	color: #ffffff;
 	font-size: 18px;
 	line-height: 30px;
