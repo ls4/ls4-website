@@ -200,6 +200,25 @@ h2 {
 	color: #ffffff;
 }
 
+h3 {
+	font-size: 110%;
+	margin: 0 0 0.4em 0;
+	color: #000022;
+}
+
+p + h3 {
+	margin-top: 0.8em;
+}
+
+a {
+	color: #0000cc;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 .caption {
 	background-color: #e5e5e5;
 	margin: 0;
@@ -210,6 +229,10 @@ h2 {
 	line-height: 150%;
 	margin-bottom: 0.5em;
 	text-align: justify;
+}
+
+.caption p + p {
+	margin-top: -0.2em;
 }
 
 .box > img {

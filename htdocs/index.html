@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="content-script-type" content="text/javascript" />
+	<meta http-equiv="content-style-type" content="text/css" />
+
 	<title>The LS4 Project | open source distributed storage system</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 	<meta name="description" content="LS4 -- open-source distributed storage system" />
 	<meta name="keywords" content="LS4, distributed, storage, scalability, versioning, replication, MessagePack, msgpack" />
 
 	<script src="index/prettify.js" type="text/javascript"></script>
-	<link href="index/prettify.css" rel="stylesheet" type="text/css"/>
+	<link href="index/prettify.css" rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" type="text/css" href="index/yui/cssreset/reset-min.css">
-	<link rel="stylesheet" type="text/css" href="index/yui/cssfonts/fonts-min.css">
-	<link rel="stylesheet" type="text/css" href="index/yui/cssbase/base-min.css">
-	<link rel="stylesheet" type="text/css" href="index/ls4.css">
+	<link rel="stylesheet" type="text/css" href="index/yui/cssreset/reset-min.css" />
+	<link rel="stylesheet" type="text/css" href="index/yui/cssfonts/fonts-min.css" />
+	<link rel="stylesheet" type="text/css" href="index/yui/cssbase/base-min.css" />
+	<link rel="stylesheet" type="text/css" href="index/ls4.css" />
 </head>
 <body onload="prettyPrint()">
 <div id="container">
@@ -54,7 +56,7 @@ $ ls4cmd --help</pre>
 	</li>
 	<li>
 		<a href="http://github.com/ls4/ls4">
-		<span class="navi_title">Source</span>
+		<span class="navi_title">Source Code</span>
 		</a>
 	</li>
 	<li>
@@ -67,7 +69,7 @@ $ ls4cmd --help</pre>
 	<div class="cbox">
 		<div class="box rsplitr">
 			<h2>News</h2>
-			<ul id="news">
+			<ul id="news" style="min-height: 438px;">
 			<li>
 				<p class="news_day">2011-05-XX</p>
 				<p class="news_desc">Released version 1.0.0</p>
@@ -83,8 +85,13 @@ $ ls4cmd --help</pre>
 			<h2>Data Model</h2>
 			<img src="index/datamodel.png" />
 			<div class="caption">
-				<p>LS4 stores a set of objects identified by a key. Each object consists of data and attributes. And each object can have multiple versions. You can get back old version of the object unless you surely delete it. The versions are identified by name or creation time.
-				</p>
+				<h3>Object</h3>
+				<p>LS4 stores a set of objects identified by a <strong>key</strong>. Each object consists of <strong>data</strong> and <strong>attributes</strong> where data is a raw bytes and attributes are associative pairs.
+				Objects are distributed to servers for scalability and copied on multiple servers for availability.</p>
+				<h3>Versions</h3>
+				<p>Each object can have multiple versions. You can get back old version of the object unless you surely delete it. These versions are identified by name or creation time.</p>
+				<p>With the versions, you can make objects <em>immutable</em>.<!--; objects once stored by a client are not changed or overwritten by the others.--> It will be useful to design customized API layer over LS4.
+				Take a look the <a href="http://ls4.sourceforge.net/doc/api.html">API reference</a> for details.</p>
 			</div>
 		</div>
 	</div>
@@ -93,7 +100,12 @@ $ ls4cmd --help</pre>
 		<h2>Replica Sets</h2>
 		<img src="index/design.png" />
 		<div class="caption">
-			<p>TODO</p>
+			<h3>Replication</h3>
+			<p>Replica set is a set of data servers that stores same objects. When an object is put to a data server, the server copies it to the other servers on the same replica set. If a server is crashed, another server in the replica set fails-over immediately.</p>
+			<p>Fail-back can be done without stopping the cluster. The operations are documented at the <a href="http://ls4.sourceforge.net/doc/operation.html">Fault management</a> documents.</p>
+			<h3>Scalability</h3>
+			<p>You can add replica sets to the cluster at any time witout any impacts on the applications. By adding the replica sets, storage capacity and read/write performance increase.</p>
+			<p>You can also add servers to existent replica sets to improve availability and read performance. These servers can be located on remote datacenters for <a href="#GeoRedundancy">Geo Redundancy</a>.</p>
 		</div>
 	</div>
 
@@ -101,22 +113,33 @@ $ ls4cmd --help</pre>
 		<h2>Direct Data Transfer</h2>
 		<div class="ic1right"><img src="index/direct.png" /></div>
 		<div class="caption ic1left">
-			<p>TODO</p>
+			<h3>HTTP Reverse Proxy</h3>
+			<p>You are probably using reverse proxies on the front of the web service to relay HTTP requests to application servers.
+			Since rich application servers are not so optimized to serve large contents like photos or movies, you'll want to relay the requests to storage servers directly for these contents.</p>
+			<p>But to realize authentication or other features, you were required to add some mechanisms in the storage servers.</p>
+			<!--
+			<p>But you had to add some mechanisms in the storage servers to realize authentication or other features.</p>
+			-->
+			<h3>The Bypass</h3>
+			<p>With LS4 and <a href="http://nginx.org/">nginx</a>, contents can be transferred without passing through application servers while the application server proceeds HTTP requests. Thus you can reduce CPU load and network traffics.</p>
+			<p>it's implemented using nginx's <em>X-Accel-Redirect</em> feature. See the <a href="http://ls4.sourceforge.net/doc/howto/ddt.html">HowTo</a> to configure the bypass. Moreover, <a href="http://www.centos.org/docs/5/html/Virtual_Server_Administration/s2-lvs-directrouting-VSA.html">LVS's Direct Routing</a> may be useful on the proxy.</p>
 		</div>
 	</div>
 
 	<div class="box">
-		<h2>Geo Redundancy</h2>
+		<h2 id="GeoRedundancy">Geo Redundancy</h2>
 		<div class="ic1right"><img src="index/geo.png" /></div>
 		<div class="caption ic1left">
-			<p>TODO</p>
+			<p>In these days, it's a common problem of us how to protect large-scale data set from disasters like a crash of the whole datacenter.</p>
+			<p>You can configure LS4 to replicate data over remote datacenters while applications get data from the local datacenter. It's documented at the <a href="http://ls4.sourceforge.net/doc/howto/location.html">location-aware master selection</a> howto.</p>
 		</div>
 	</div>
 
 	<div class="box">
-		<h2>REST and MessagePack-RPC API</h2>
+		<h2>Ruby + MessagePack</h2>
 		<div class="caption">
-			<p>TODO</p>
+			<p>LS4 is fully written in Ruby including management tools. And the inter-process communication, which often becomes complicated, is totally implemented by <a href="http://msgpack.org/">MessagePack</a>. It provides asynchronous API in the method-invocation style. So it's relatively easy to customize the <a href="https://github.com/ls4/ls4">source code</a>.<!-- You can also use MessagePack's asynchronous API on the client application.--></p>
+			<p>(If you worry about the performance of the Ruby, check the <a href="http://ls4.sourceforge.net/doc/howto/offload.html">traffic offloading</a> howto.)
 		</div>
 	</div>
 
@@ -124,21 +147,25 @@ $ ls4cmd --help</pre>
 		<h2 id="quickstart">Quick Start</h2>
 		<div class="ic2left">
 			<pre class="prettyprint">&gt; gem install ls4
-&gt; ls4-standalone -s ./data -h 18080</pre>
+&gt; ls4-standalone -s ./data -t 18080</pre>
 			<pre class="prettyprint">&gt; ls4cmd add_data key1 value1
 &gt; ls4cmd get_data key1
 value1</pre>
 		</div>
 		<div class="caption ic2right">
-			<p>TODO</p>
+			<h3>Installation</h3>
+			<p>You can use <a href="http://rubygems.org/gems/ls4/">RubyGems</a> to install LS4. If you don't have the gem command, install <a href="http://www.ruby-lang.org/">Ruby</a> first.</p>
+			<h3>Standalone server</h3>
+			<p>You can try the it using stand-alone server (<em>ls4-standalone</em>) and command-line client (<em>ls4cmd</em>). You can also use HTTP APIs on the port specified with the <strong>-t</strong> option. See the <a href="http://ls4.sourceforge.net/doc/api.html">API reference</a> for details.</p>
+			<h3>Learn More</h3>
+			<p>To build LS4 cluster, see the <a href="http://ls4.sourceforge.net/doc/">documents</a>.</p>
 		</div>
 	</div>
 
 	<div id="footer">
 		<a id="footerlogo" href="http://sourceforge.net/projects/ls4"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=508833&amp;type=11" width="120" height="30" alt="Get LS4 at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a>
-		<p>Copyright &copy; 2010-2011 FURUHASHI Sadayuki</p>
+		<p>Copyright &copy; 2011 FURUHASHI Sadayuki</p>
 	</div>
 </div>
 </body>
 </html>
-
